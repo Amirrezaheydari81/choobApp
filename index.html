@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="css/pattern.min.css">
+    <style>
+        @font-face {
+            font-family: danapro;
+            src: url("https://waregint.sirv.com/iseokar.ir/fonts/Dana-Regular.woff2") format("woff2");
+            font-weight: 100;
+            font-style: normal
+        }
+
+        body {
+            font-family: danapro !important
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="pattern-cross-dots-lg bg-white w-100"
+        style="opacity:0.1; position: absolute;z-index: -1; width: 100%; height: 100%; margin-top: -3rem;">
+    </div>
+    <div class="container" ng-app="choobApp" ng-controller="choobContoroller">
+        <div class="row justify-content-center mt-5">
+            <div class="col col-md-6 mt-5">
+                <div class="input-group justify-content-center">
+                    <div class="form-floating mb-3 mx-1">
+                        <input type="number" class="form-control" id="length-choob" placeholder=" " min="0"
+                            ng-model="length" ng-init="length" ng-change="calc()">
+                        <label for="length-choob">طول چوب را وارد کنید</label>
+                    </div>
+                    <div class="form-floating mb-3 mx-1">
+                        <input type="number" class="form-control" id="width-choob" placeholder=" " min="0"
+                            ng-model="width" ng-init="width" ng-change="calc()">
+                        <label for="width-choob">عرض چوب را وارد کنید</label>
+                    </div>
+                    <p class="small text-center bg-warning rounded-3 px-1">عدد را به متر وارد کنید مثال 1</p>
+                </div>
+                <div class="input-group justify-content-center text-center bg-dark mt-1 rounded-3 text-white align-items-center py-2">
+                     CM {{hasel_cm}} : حاصل نهایی
+                </div>
+                <div class="input-group justify-content-center text-center bg-dark mt-1 rounded-3 text-white align-items-center py-2">
+                     Metr {{hasel_metr}} : حاصل نهایی
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('choobApp', []);
+        app.controller("choobContoroller", function ($scope) {
+            $scope.calc = function () {
+                $scope.length;
+                $scope.width;
+                $scope.le_wi = $scope.length * $scope.width;
+                $scope.hasel_cm = $scope.le_wi * 100; //convert CM
+                $scope.hasel_metr = $scope.length * $scope.width;
+            }
+        });    
+    </script>
+</body>
+
+</html>
